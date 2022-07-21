@@ -1,0 +1,42 @@
+{
+  "name": "win-phpvp",
+  "version": "0.1.0",
+  "description": "PHP Version Manager for Windows",
+  "main": "lib/index.js",
+  "author": "Dekate",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "rm": "rm -rf dist",
+    "build": "babel src -d dist",
+    "exec": "pkg . --out-path ./bin",
+    "build:exec": "npm run build && npm run exec"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.3.0",
+    "ini": "^3.0.0",
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@types/inquirer": "^8.2.1",
+    "babel-preset-minify": "^0.5.2",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "pkg": "^5.8.0",
+    "prettier": "^2.6.2"
+  },
+  "bin": "./dist/index.js",
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "node16-win-x64"
+    ],
+    "outputPath": "./bin"
+  }
+}
