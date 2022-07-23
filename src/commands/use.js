@@ -1,7 +1,7 @@
 import { Command } from 'commander'
 import { getConfig, installedPhp, setConfig } from '../utils.js'
 import chalk from 'chalk'
-import { symlinkSync, unlinkSync } from 'fs'
+import { existsSync, symlinkSync, unlinkSync } from 'fs'
 
 export default function init() {
   const command = new Command('use')
@@ -46,7 +46,7 @@ async function operation(version) {
   const oldPhpPath = `${config['link-dir']}`
   const phpPath = `${config['root-dir']}/${php.name}`
   try {
-    unlinkSync(oldPhpPath, { recursive: true })
+    existsSync(oldPhpPath) && unlinkSync(oldPhpPath)
     symlinkSync(phpPath, config['link-dir'])
     console.log(
       `  using ` +

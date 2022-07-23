@@ -1,7 +1,7 @@
 import { readFileSync, existsSync, writeFileSync } from 'fs'
 import { resolve, basename, dirname } from 'path'
 import { parse, stringify } from 'ini'
-import { readdirSync } from 'fs'
+import { readdirSync, statSync } from 'fs'
 
 const path = dirname(process.execPath)
 export const configPath = resolve(path, './config.ini')
@@ -36,7 +36,13 @@ export function installedPhp() {
   return files
     .filter((file) => {
       const dir = basename(config['link-dir'])
-      return file !== dir
+      return (
+        file !== dir &&
+        file.match(
+          /^php-([\d\w]+)\.([\d\w]+)\.([\d\w]+)(-\d+)?(-nts)?-win32(-([\w\d]+)?-(x\d{2})?)?$/gi
+        ) &&
+        statSync(resolve(config['root-dir'], file)).isDirectory()
+      )
     })
     .map((version) => {
       return {

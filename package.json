@@ -1,6 +1,6 @@
 {
-  "name": "win-phpvp",
-  "version": "0.1.0",
+  "name": "phpvp",
+  "version": "0.1.1",
   "description": "PHP Version Manager for Windows",
   "main": "lib/index.js",
   "author": "Dekate",
