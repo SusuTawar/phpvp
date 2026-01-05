@@ -1,6 +1,6 @@
 # Php Version Picker ![GitHub package.json version](https://img.shields.io/github/package-json/v/SusuTawar/phpvp?style=for-the-badge)
 
-## Intro
+## Introduction
 
 `phpvp` allows you to pick different php version easily.
 mainly based off [`nvm`](https://github.com/nvm-sh/nvm) so you might find similarity but for php
